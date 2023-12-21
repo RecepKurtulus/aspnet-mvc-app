@@ -1,0 +1,15 @@
+@model Product
+<div class="col-sm-8 col-md-6 col-lg-3">
+        <div class="card" style="width: 18rem;">
+                <img src="~/images/default.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                        <h5 class="card-title">@Model.ProductName</h5>
+                        <h5 class="card-title">@Model.ProductPrice $</h5>
+                        <a type="button" class="btn btn-info" asp-action="Get" asp-route-id="@Model.ProductId">
+
+                                Details
+                                <i class="fa-solid fa-magnifying-glass fa-bounce"></i>
+                        </a>
+                </div>
+        </div>
+</div>
