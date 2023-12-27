@@ -5,6 +5,9 @@ namespace Repositories.Contracts
     //repository'i getirmek zorunda.
     {
         IProductRepository Product { get; }
+
+        
+
         void Save(); //Veritabanına kaydetmek için kullanılır.
 
     }

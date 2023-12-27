@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
 
@@ -22,7 +23,17 @@ namespace Repositories
             return trackChanges 
                 ? _context.Set<T>()
                 : _context.Set<T>().AsNoTracking();
+                //Bütün kayıtları getiren bir tanım yazdık.
         }
-        //Bütün kayıtları getiren bir tanım yazdık.
+
+        public T? FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges)
+        {
+            return trackChanges
+            //Değişiklikler izlenicek demek.
+                ?_context.Set<T>().Where(expression).SingleOrDefault(expression)
+                //Contextte git ilgili tipe set ol. Ve bir adet kaydın dönmesini sağla.
+                :_context.Set<T>().Where(expression).AsNoTracking().SingleOrDefault(expression);
+                //Değişiklikler izlenmicekse AsNoTracking ile takip etmemesini söylüyoruz.
+        }
     }
 }

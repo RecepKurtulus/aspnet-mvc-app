@@ -28,7 +28,8 @@ namespace StoreApp.Controllers
             //Productun için gir eğer domainin sonu ile id değeri eşleşiyosa 
 			//onu döndür
 			//mesela domain/Product/Get/1 dedik buradaki 1 id değeri oluyor
-            throw new NotImplementedException();
+            var model=_manager.Product.GetOneProduct(id,false);
+            return View(model);   
         }
     }
 }
